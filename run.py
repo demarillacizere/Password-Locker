@@ -25,11 +25,11 @@ def main():
     print(f"username :{username}")
     print('create a password')
     password=input()
+    save_user(create_contact(f_name,l_name,p_number,e_address))
     print('enter the password you just created in order to login to your account')
-    login_password=input()
-    if login_password==password:
-        print('welcome')
-
+    if check_password(input()):
+        print('enter the following short code to navigate your account')
+    
 if __name__ == '__main__':
 
     main()
