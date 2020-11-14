@@ -37,5 +37,12 @@ class Credential:
 
         for contact in cls.contact_list:
             if contact.phone_number == number:
-                return contact     
+                return contact   
+
+    @classmethod
+    def display_credentials(cls):
+        '''
+        method that returns the credentials list
+        '''
+        return cls.credential_list              
                 
