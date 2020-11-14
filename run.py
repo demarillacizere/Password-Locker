@@ -1,6 +1,6 @@
 #!/usr/bin/env python3.6
 from user import User
-def create_account(fname,lname,phone,email):
+def create_account(username,password):
     '''
     Function to create a new account
     '''
@@ -17,7 +17,19 @@ def check_password(password):
     '''
     return User.check_password(password)
 
-print("Welcome to Password Locker")
-print('What is your name')
-new_user.username=input()
-print ("")
+def main():
+    print("Welcome to Password Locker !")
+    print('What is your name')
+    username=input()
+    print (f"Welcome {username}, create your account")
+    print(f"username :{username}")
+    print('create a password')
+    password=input()
+    print('enter the password you just created in order to login to your account')
+    login_password=input()
+    if login_password==password:
+        print('welcome')
+
+if __name__ == '__main__':
+
+    main()
