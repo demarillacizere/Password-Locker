@@ -16,7 +16,7 @@ class User:
         User.users_list.append(self)   
 
     @classmethod
-    def check_authentication(password):
+    def check_password(password):
         '''
         Method that checks if the account password entered is correct
         Args:

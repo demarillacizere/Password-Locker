@@ -11,6 +11,11 @@ def save_account(user):
     Function to save new user
     '''
     User.save_user()
+def check_password(password):
+    '''
+    Function that check if a contact exists with that number and return a Boolean
+    '''
+    return User.check_password(password)
 
 print("Welcome to Password Locker")
 print('What is your name')
