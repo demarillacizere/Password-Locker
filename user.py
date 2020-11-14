@@ -9,7 +9,7 @@ class User:
         self.password=password
 
     def save_user(self):
-         '''
+        '''
         save_user method saves user account credentials into users_list
         '''
 
@@ -29,3 +29,4 @@ class User:
                     return True
 
         return False
+    
