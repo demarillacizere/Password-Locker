@@ -149,8 +149,11 @@ def main():
                     else:
                             print("That credential does not exist")
             elif short_code == 'del':
-                print()
-                 delete_credential()
+                print("enter the platform name of the credential you waant to delete")
+                search_name=input()
+                if check_existing_credentials(search_name):
+                        search_credential = find_credential(search_name)
+                        delete_credential(search_credential)
 
             elif short_code == "ex":
                     print("Bye .......")
