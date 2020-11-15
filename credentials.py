@@ -1,3 +1,6 @@
+import pyperclip
+import random
+import string
 class Credential:
     '''
     class that generates new instances of credentials
@@ -15,6 +18,11 @@ class Credential:
         '''
 
         Credential.credential_list.append(self)    
+    
+    # def generate_password(size=8, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
+
+	# 	gen_pass=''.join(random.choice(char) for _ in range(size))
+	# 	return gen_pass
 
     def delete_credential(self):
 
@@ -35,9 +43,24 @@ class Credential:
             Credentials of an account name that matches the search .
         '''
 
-        for contact in cls.contact_list:
-            if contact.phone_number == number:
-                return contact   
+        for credential in cls.credential_list:
+            if credential.account == account:
+                return credential   
+
+    @classmethod
+    def credentials_exist(cls,name):
+        '''
+        Method that checks if a credential exists from the credential list.
+        Args:
+            name: Platform name to search if it its credentials are saved
+        Returns :
+            Boolean: True or false depending if the credentials exists
+        '''
+        for credential in cls.credential_list:
+            if credential.account == name:
+                    return True
+
+        return False
 
     @classmethod
     def display_credentials(cls):
