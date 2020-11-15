@@ -149,6 +149,7 @@ def main():
                     else:
                             print("That credential does not exist")
             elif short_code == 'del':
+                print()
                  delete_credential()
 
             elif short_code == "ex":
