@@ -6,8 +6,8 @@ class Credential:
     class that generates new instances of credentials
     '''
     credential_list=[]
-    def __init__(self,accountname,username,password):
-        self.account=accountname
+    def __init__(self,sitename,username,password):
+        self.site_name=sitename
         self.username=username
         self.password=password
 
@@ -35,7 +35,7 @@ class Credential:
         Credential.credential_list.remove(self)   
 
     @classmethod
-    def find_by_account(cls,account):
+    def find_by_site(cls,site):
         '''
         Method that takes in an account name and returns its credentials.
 
@@ -46,7 +46,7 @@ class Credential:
         '''
 
         for credential in cls.credential_list:
-            if credential.account == account:
+            if credential.site_name == site:
                 return credential   
 
     @classmethod
@@ -54,12 +54,12 @@ class Credential:
         '''
         Method that checks if a credential exists from the credential list.
         Args:
-            name: Platform name to search if it its credentials are saved
+            name: site name to search if it its credentials are saved
         Returns :
             Boolean: True or false depending if the credentials exists
         '''
         for credential in cls.credential_list:
-            if credential.account == name:
+            if credential.site_name == name:
                     return True
 
         return False
@@ -71,3 +71,11 @@ class Credential:
         '''
         return cls.credential_list              
                 
+    @classmethod
+    def copy_credential(cls,site_name):
+        '''
+        a method that copies the password of a certain credential to the clipboard
+        '''
+        find_credential = Credential.find_by_site(site_name)
+        return pyperclip.copy(find_credential.password)
+		        

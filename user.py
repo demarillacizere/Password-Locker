@@ -16,17 +16,14 @@ class User:
         User.users_list.append(self)   
 
     @classmethod
-    def check_password(password):
+    def check_user(cls,username,password):
         '''
-        Method that checks if the account password entered is correct
-        Args:
-            password: checking if the password entered matches the password saved 
-        Returns :
-            Boolean: True or false depending if the password is correct or not
-        '''
+		Method that checks if the name and password entered match entries in the users_list
+		'''
         for user in cls.users_list:
-            if user.password == password:
-                    return True
-
-        return False
+            current_user = ''
+            if(user.username == username and user.password == password):
+                current_user = user.username
+		    
+        return current_user
     

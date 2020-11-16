@@ -15,16 +15,16 @@ class TestCredentials(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_credential = Credential("","",'')
+        self.new_credential = Credential("IG","Dema",'d30')
     
     def test_init(self):
         '''
         test_init test case to test if the object is initialized properly
         '''
 
-        self.assertEqual(self.new_credential.account,"")
-        self.assertEqual(self.new_credential.username,"")
-        self.assertEqual(self.new_credential.password,"")
+        self.assertEqual(self.new_credential.site_name,"IG")
+        self.assertEqual(self.new_credential.username,"Dema")
+        self.assertEqual(self.new_credential.password,"d30")
     def test_save_credential(self):
         '''
         test_save_credential test case to test if the credential object is saved into
@@ -60,6 +60,25 @@ class TestCredentials(unittest.TestCase):
             self.new_credential.delete_credential()
             self.assertEqual(len(Credential.credential_list),1) 
 
+    def test_display_credentials(self):
+        '''
+        Test to check if the display_credentials method, displays the correct credentials.
+        '''
+        self.new_credential.save_credential()
+        new_credential = Credential('Twitter','user','1200')
+        new_credential.save_credential()
+        new_credential = Credential('Google','user2','we300')
+        new_credential.save_credential()
+        self.assertEqual(len(Credential.display_credentials()),3)
+    def test_find_by_site(self):
+        '''
+        Test to check if the find_by_site method returns the correct credential
+        '''
+        self.new_credential.save_credential()
+        new_credential = Credential('Twitter','user','1200')
+        new_credential.save_credential()
+        credential_exists = Credential.find_by_site('Twitter')
+        self.assertEqual(credential_exists,new_credential)
 
 if __name__ == '__main__':
     unittest.main()                
