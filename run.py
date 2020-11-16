@@ -39,20 +39,14 @@ def generate_password():
 	gen_pass = Credential.generate_password()
 	return gen_pass
 
-def delete_credential(credential):
-    '''
-    Function to generate credential
-    '''
-    credential.delete_credential() 
-
 def find_credential(site_name):
     '''
-    Function that finds a credential by site name and returns the contact
+    Function that finds a credential by site name and returns the credential
     '''
     return Credential.find_by_site(site_name)
 def check_existing_credentials(credential):
     '''
-    Function that check if a credentials for a certain platform exists and return a Boolean
+    Function that check if a credentials for a certain site exists and return a Boolean
     '''
     return Credential.credentials_exist(credential)
 def display_credentials():
@@ -170,7 +164,7 @@ def main():
                         else:
                                 print("That credential does not exist")
                 elif short_code == 'del':
-                    print("enter the platform name of the credential you waant to delete")
+                    print("enter the site name of the credential you want to delete")
                     search_name=input()
                     if check_existing_credentials(search_name):
                             search_credential = find_credential(search_name)
